@@ -25,16 +25,20 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_runtime_dependency 'rails', '>= 3.1.1'
-  s.add_runtime_dependency 'devise'
-  s.add_runtime_dependency 'randexp'
-  s.add_runtime_dependency 'rotp', '>= 4.0.0'
-  s.add_runtime_dependency 'encryptor'
+  s.add_runtime_dependency 'rails', '>= 5.2'
+  s.add_runtime_dependency 'devise', '>= 4.8'
+  s.add_runtime_dependency 'randexp', '>= 0.1.7'
+  s.add_runtime_dependency 'rotp', '>= 6.0'
+  s.add_runtime_dependency 'encryptor', '>= 3.0.0'
 
-  s.add_development_dependency 'bundler'
-  s.add_development_dependency 'rake'
-  s.add_development_dependency 'rspec-rails', '>= 3.0.1'
-  s.add_development_dependency 'capybara', '~> 2.5'
-  s.add_development_dependency 'pry'
-  s.add_development_dependency 'timecop'
+  s.add_development_dependency 'bundler', '>= 2.4'
+  s.add_development_dependency 'rake', '>= 13.0'
+  s.add_development_dependency 'rspec-rails', '>= 5.1'
+  s.add_development_dependency 'capybara', '>= 3.39'
+  s.add_development_dependency 'benchmark'
+  s.add_development_dependency 'bigdecimal'
+  s.add_development_dependency 'mutex_m'
+  s.add_development_dependency 'tsort'
+  s.add_development_dependency 'pry', '>= 0.14'
+  s.add_development_dependency 'timecop', '>= 0.9'
 end

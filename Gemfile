@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in devise_ip_filter.gemspec
+# Specify your gem's dependencies in two_factor_authentication.gemspec
 gemspec
 
 rails_version = ENV["RAILS_VERSION"] || "default"
