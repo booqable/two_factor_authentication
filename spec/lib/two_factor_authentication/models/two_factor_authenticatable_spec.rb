@@ -107,6 +107,30 @@ describe Devise::Models::TwoFactorAuthenticatable do
     it_behaves_like 'authenticate_totp', EncryptedUser.new
   end
 
+  describe '#totp_timestamp=' do
+    shared_examples 'totp_timestamp setter' do |klass|
+      let(:instance) { klass.new }
+
+      it 'converts integer values to a Time object' do
+        unix_timestamp = 1_732_694_400
+        instance.totp_timestamp = unix_timestamp
+
+        expect(instance.totp_timestamp).to be_a(Time)
+        expect(instance.totp_timestamp.to_i).to eq(unix_timestamp)
+      end
+
+      it 'passes through non integer values unchanged' do
+        value = Time.now
+        instance.totp_timestamp = value
+
+        expect(instance.totp_timestamp).to eq(value)
+      end
+    end
+
+    it_behaves_like 'totp_timestamp setter', GuestUser
+    it_behaves_like 'totp_timestamp setter', EncryptedUser
+  end
+
   describe '#send_two_factor_authentication_code' do
     let(:instance) { build_guest_user }
 

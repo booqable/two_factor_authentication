@@ -48,6 +48,15 @@ module Devise
           true
         end
 
+        def totp_timestamp=(value)
+          if value.is_a?(Integer)
+            timestamp = Time.respond_to?(:zone) && Time.zone ? Time.zone.at(value) : Time.at(value)
+            super(timestamp)
+          else
+            super
+          end
+        end
+
         def provisioning_uri(account = nil, options = {})
           totp_secret = options[:otp_secret_key] || otp_secret_key
           options[:digits] ||= options[:otp_length] || self.class.otp_length
